@@ -6,12 +6,12 @@
   "name": "proyecte",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "_Bienvenido al emocionante juego en linea de Conecta4, el clasico juego que pone a prubea tu agilidad y destreza mental. Este juego te permite desafiar a otros jugadores en línea, crear una cuenta, iniciar sesión, y guardar tu progreso actual para continuar más tarde. Además se incluyen estadisticas_"
 }

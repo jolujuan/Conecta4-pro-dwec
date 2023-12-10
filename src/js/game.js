@@ -1,8 +1,8 @@
 
 let gameStatus = {
 
-    PLAYERS: ["yellow", "red"],
-    indiceJugadorActual:0,
+    players: ["yellow", "red"],
+    indiceJugadorActual: 0,
     currentStatus: "PLAYING",
     coordenadas: null,
     jugadorHaGanado: false,
@@ -40,7 +40,7 @@ export default class Juego {
     }
 
     /* getJugadorGanador() {
-         for (let jugador of STATE.PLAYERS) {
+         for (let jugador of STATE.players) {
              if (this.haGanado(jugador)) {
                  return jugador; // Retorna el jugador que ha ganado
              }
@@ -80,19 +80,17 @@ export default class Juego {
         for (let i = 5; i >= 0; i--) {
             if (STATE.tablero[i][col] === null) {
                 //Iniciamos con el primer jugador
-                STATE.tablero[i][col] = STATE.PLAYERS[this.jugadorActual];
+                STATE.tablero[i][col] = STATE.players[this.jugadorActual];
 
                 //1- Antes de cambiar de jugador comprobamos si ha ganado 
                 //pasandole el jugador al metodo. 2- Cambiamos el estado
-                if (this.haGanado(STATE.PLAYERS[this.jugadorActual])) {
+                if (this.haGanado(STATE.players[this.jugadorActual])) {
 
-                    alert(`${STATE.PLAYERS[this.jugadorActual]} ha ganado!`);
+                    alert(`${STATE.players[this.jugadorActual]} ha ganado!`);
                     //El estado cambiara
                     STATE.currentStatus = "WON";
                     //Incrementamos el marcador
-                    this.actualizarMarcador(STATE.PLAYERS[this.jugadorActual]);
-                    //Marcar fichas ganadoras
-                    // this.marcarFichasGanadoras(STATE.PLAYERS[this.jugadorActual]);
+                    this.actualizarMarcador(STATE.players[this.jugadorActual]);
 
                     STATE.jugadorHaGanado = true;
                 }  // Alternar cada jugador independientemente si ha ganado
@@ -112,12 +110,10 @@ export default class Juego {
                 );
 
                 celdaParaPintar.className = ''; // Limpia todas las clases previas
-                if (STATE.tablero[i][j] === STATE.PLAYERS[0]) {
-/*                     STATE.clasesCSS[i][j]="yellow"; //Guardar estado celda clase
- */                    celdaParaPintar.classList.add("yellow");
+                if (STATE.tablero[i][j] === STATE.players[0]) {
+                    celdaParaPintar.classList.add("yellow");
 
-                } else if (STATE.tablero[i][j] === STATE.PLAYERS[1]) {
-                    /* STATE.clasesCSS[i][j]="red", */
+                } else if (STATE.tablero[i][j] === STATE.players[1]) {
                     celdaParaPintar.classList.add("red");
                 }
             }
@@ -131,7 +127,6 @@ export default class Juego {
                     `fila-${i}-col-${j}`
                 );
                 celdaParaPintar.className = '';
-                /* STATE.tablero[i][j] = null; */
             }
         }
     }
@@ -149,19 +144,20 @@ export default class Juego {
     }
 
     actualizarMarcadorBase() {
+        /* Lo utilizaremos para volver actualizar el estado cuando se lee de la base */
         for (const jugador in STATE.partidasGanadas) {
             const partidasGanadas = STATE.partidasGanadas[jugador];
-            if (jugador==="yellow") {
+            if (jugador === "yellow") {
                 const j1 = document.querySelector('.j1');
-                j1.innerHTML =partidasGanadas;
-                                
-            }else if(jugador==="red"){
+                j1.innerHTML = partidasGanadas;
+
+            } else if (jugador === "red") {
                 const j2 = document.querySelector('.j2');
-                j2.innerHTML =partidasGanadas;
-            }            
+                j2.innerHTML = partidasGanadas;
+            }
         }
     }
-    
+
 
     marcarFichasGanadoras(coordenadas) {
         //Separamos las filas (i) de las columnas (i) de las coordenadas
