@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<style>
+    .login-btn {
+        width: 150px;
+        display: block;
+        margin: 25px auto 25px auto;
+        padding: 14px 22px;
+        background-color: #f05549;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 13px;
+        transition: background-color 0.3s;
+    }
+
+    .login-btn:hover {
+        background-color: #df1114;
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .logout {
+        background-color: #ccc;
+        color: #000;
+    }
+
+    h3.boton {
+        margin: 15px auto 15px auto;
+        width: 61%;
+        text-align: center;
+        border: solid 2px blue;
+        padding: 15px;
+        background-color: #e6e5fc;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .mensaje-bienvenida {
+        display: inline-block;
+        margin-top: 25px;
+        color: #0b69ad;
+        font-weight: bold;
+        font-size: 23px;
+        text-decoration: underline;
+    }
+</style>
+
+<h3 class="boton">
+   <!-- <?php
+   /* ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);*/
+    // Pasamos las variables que nos interesan
+    if (isset($_SESSION['nombre'])) {
+        $nombre = $_SESSION['nombre'];
+        echo '<span class="mensaje-bienvenida">Bienvenido de nuevo, ' . $nombre . '.</span>';
+        ?>
+            <a href="./include/bd/procesaBase.php" class="login-btn">Mensajes</a>
+            <a href="./include/auth/desconectar.php" class="login-btn logout">Desconectarse</a>
+        <?php
+
+    ?>
+    <?php
+    } else {
+        ?><a href="./include/auth/login.php" class="login-btn">Iniciar Sesión</a><?php 
+    }
+    ?>-->
+
+    <a href="../auth/login.html" class="login-btn">Iniciar Sesión</a>
+
+</h3>

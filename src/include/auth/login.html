@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="../../img/logo1.png" type="image/png">
+
+
+  <title>Login</title>
+  <style>
+    body {
+      background: rgb(238, 174, 202);
+      background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    }
+
+    .form-title {
+      font-size: 2rem;
+      color: #333;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      padding: 1rem;
+      border-bottom: 2px solid #0b69ad;
+      position: relative;
+    }
+
+    .recuadro {
+      border: 2px solid #2980b9;
+      padding: 20px;
+      width: 350px;
+      margin: 0 auto;
+      border-radius: 5px;
+      box-shadow: 0px 3px 3px #aaa;
+      background-color: #fff;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .recuadro:hover {
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input:focus {
+      border-color: #2980b9;
+    }
+
+    .divLinea {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    #mensaje {
+      margin-top: 7px;
+      margin-left: 10px;
+      width: 55%;
+      color: black;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 3px;
+      padding: 5px 5px;
+    }
+    
+    /*Solo mostrara el borde cuando contenga algo*/
+    #mensaje:not(:empty) {
+      border: 2px solid #aaa;
+    }
+
+    input[type="submit"] {
+      display: inline-block;
+      width: 40%;
+      background-color: #2980b9;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #1e5799;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"]::placeholder,
+    input[type="password"]::placeholder {
+      font-size: 13px;
+    }
+
+
+    #link,
+    a {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      color: #2980b9;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    #link {
+      font-size: 1.1em;
+    }
+
+    #link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- <?php include 'procesaUsuari.php';?> -->
+<!-- 
+  <script>alert("<-Usuarios existentes->\n\njose    1234\nraul    1234\njoselu 1234\n\nSí lo desea puede crear uno :)");</script>
+  -->
+
+  <div class="recuadro">
+    <h1 class="form-title">Inicio de sesión</h1>
+
+    <form action="../../index.html"  >
+      <input type="text" id="usuario" name="usuario" placeholder="Username" >
+
+      <input type="password" id="contrasena" name="contrasena" placeholder="Password">
+
+      <div class="divLinea">
+        <input  type="submit"  value="Iniciar sesion">
+        
+        <label id="mensaje" for="mensaje"></label>
+
+        <script src="../../js/procesaUsuario.js"></script>
+        
+      </div>
+      <a id="link" href="registre.html">Si no tienes usuario, Registrate</a>
+    </form>
+  </div>
+  
+</body>
+
+</html>
