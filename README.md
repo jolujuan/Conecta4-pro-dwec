@@ -34,7 +34,7 @@ _Para comenzar a jugar a Coloca 4, sigue estos pasos:_
 
 1. Clona el repositorio en tu máquina local.
 2. Instala las dependencias con `npm install`.
-3. Inicia el servidor con `npm start`.
+3. Inicia el servidor con la extensión `live Server`.
 4. Abre tu navegador y ve a `http://localhost:3000`.
 5. Regístrate para crear tu cuenta de usuario.
 6. ¡Comienza a jugar!
