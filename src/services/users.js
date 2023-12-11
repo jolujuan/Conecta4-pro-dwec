@@ -1,5 +1,5 @@
 import { login, register, logoutSupabase, addInput } from "./http.js";
-export { loginUser, registerUser,addInputRegister, logout };
+export { loginUser, registerUser, logout };
 
 function expirationDate(expires_in, extraSeconds) {
   const currentTimeInSeconds = Math.floor(Date.now() / 1000);
@@ -45,7 +45,7 @@ async function registerUser(email, password) {
   return status;
 }
 
-async function addInputRegister(nickname) {
+/* async function addInputRegister(nickname) {
   const status = { success: false };
   try {
     // Espera a que la función register complete y luego actualiza el estado
@@ -59,7 +59,7 @@ async function addInputRegister(nickname) {
     status.errorText = err.error_description;
   }
   return status;
-}
+} */
 
 
 function obtenerMensajeError(error) {
@@ -76,7 +76,6 @@ function obtenerMensajeError(error) {
 
 function logout() {
   const accessToken = localStorage.getItem('access_token');
-
   // Verificar si el token de acceso existe
   if (accessToken) {
     logoutSupabase(accessToken).then((lOData) => {

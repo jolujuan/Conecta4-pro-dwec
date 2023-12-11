@@ -1,5 +1,5 @@
 export { registerForm };
-import { addInputRegister, registerUser } from "../services/users.js";
+import {  registerUser } from "../services/users.js";
 import { popup, showPopup } from "./showPopup.js";
 function registerForm() {
   const divRegister = document.createElement("div");
@@ -9,7 +9,6 @@ function registerForm() {
 
     <form action="action_page.php" name="formulariRegistro" method="get">
 
-    <input type="text" id="nickname" name="nickname" placeholder="Username">
       <input type="email" id="usuario" name="usuario" placeholder="Email">
       <input type="password" id="contraRegistre1" placeholder="Password">
       <input type="password" id="contraRegistre2" placeholder="Repeat Password">
@@ -31,7 +30,6 @@ function registerForm() {
 
     let passForm = false;
 
-    let nickname = form.querySelector("#nickname");
     let user = form.querySelector("#usuario");
     let passwd = form.querySelector("#contraRegistre1");
     let passwd2 = form.querySelector("#contraRegistre2");
@@ -55,10 +53,10 @@ function registerForm() {
 
       const dataLogin = await registerUser(user.value, passwd.value);
       if (dataLogin) {
-        const dataLoginNickname = await addInputRegister(nickname.value,);
+        showPopup();  
+        /* const dataLoginNickname = await addInputRegister(nickname.value,);
         if (dataLoginNickname) {
-          showPopup();  
-        }
+        } */
       }
     }
   });

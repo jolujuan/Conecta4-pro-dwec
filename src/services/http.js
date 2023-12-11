@@ -20,7 +20,6 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-
 /*
 Prefer: "return=representation",
 
