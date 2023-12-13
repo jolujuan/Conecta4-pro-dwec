@@ -9,6 +9,7 @@ import { logout } from "./services/users.js";
 import { popup, showPopup } from "./views/showPopup.js";
 import { copyright } from "./views/copyright.js";
 import { mostrarData } from "./js/data.js";
+import { profileForm } from "./views/profile.js";
 
 export { route };
 
@@ -71,7 +72,7 @@ function route(ruta) {
       break;
     case "#/profile":
       main.innerHTML = '';
-      //   main.append(profileForm());
+      main.append(profileForm());
       break;
     case "#/logout":
       logout();

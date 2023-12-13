@@ -4,7 +4,7 @@ export {
   updateData,
   login,
   register,
-  addInput,
+  createProfile,
   logoutSupabase,
   //downloadGameState,
 };
@@ -58,7 +58,7 @@ fetch('https://tu_dominio.supabase.co/tu_endpoint', {
 } */
 
 /* 
-///METODO GENERAL PARA GUARDAR DATA EN EL SERVIDOR///
+///METODO GENERAL PARA GUARDAR DATOS EN EL SERVIDOR///
  */
 async function supaRequest(url, method, headers, body) {
 
@@ -66,25 +66,22 @@ async function supaRequest(url, method, headers, body) {
     method,
     headers,
     body: JSON.stringify(body),
-  }); 
+  });
 
   if (response.status >= 200 && response.status < 300) { // En cas d'error en el servidor
     if (response.headers.get('content-type')) { // Si retorna un JSON
       return await response.json();
-      
-
     }
     return {}; // Si no contesta res no té content-type i cal retornar un objecte buit per a ser coherent en l'eixida.
   }
-
   return Promise.reject(await response.json()); // En cas de problemes en el servidor retornen un reject.
 }
 
 /* 
 ///FUNCIONES GENERICAS///
 */
-async function saveGameState(token, data) {
-  const url = `${urlBase}/rest/v1/STATE`;
+async function saveGameState(URI, token, data) {
+  const url = `${urlBase}/rest/v1/${URI}`;
   const headersAux = {
     ...headers,
     Authorization: `Bearer ${token}`,
@@ -94,14 +91,14 @@ async function saveGameState(token, data) {
   return response;
 }
 
-async function updateData(URI,token, state) {
+async function updateData(URI, token, body) {
   const url = `${urlBase}/rest/v1/${URI}`;
   const headersAux = {
     ...headers,
     Authorization: `Bearer ${token}`,
     Prefer: 'return=representation',
   };
-  const data = await supaRequest(url, 'PATCH', headersAux, state)
+  const data = await supaRequest(url, 'PATCH', headersAux, body)
   return data;
 }
 
@@ -131,10 +128,14 @@ async function register(email, password) {
   return data;
 }
 
-async function addInput(nickname) {
-  const url = `${urlBase}/rest/v1/user_profiles`;
-  const data = await supaRequest(url, 'post', headers, { name: nickname })
-  return data;
+async function createProfile(token, body) {
+  const url = `${urlBase}/rest/v1/profiles`;
+  const headersAux = {
+    ...headers,
+    Authorization: `Bearer ${token}`,
+    Prefer: 'return=representation',
+  };
+  return await supaRequest(url, 'post', headersAux, body);
 }
 
 async function logoutSupabase(token) {

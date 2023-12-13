@@ -25,7 +25,7 @@ function registerForm() {
   let form = divRegister.querySelector("form");
 
   let buttonSubmit = form.querySelector('[type~="submit"');
-  buttonSubmit.addEventListener("click", async (event) => {
+  buttonSubmit.addEventListener('click', async (event) => {
     event.preventDefault();
 
     let passForm = false;
@@ -53,10 +53,7 @@ function registerForm() {
 
       const dataLogin = await registerUser(user.value, passwd.value);
       if (dataLogin) {
-        showPopup();  
-        /* const dataLoginNickname = await addInputRegister(nickname.value,);
-        if (dataLoginNickname) {
-        } */
+        showPopup();
       }
     }
   });

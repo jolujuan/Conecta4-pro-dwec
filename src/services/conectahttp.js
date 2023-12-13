@@ -7,34 +7,25 @@ import { getData, saveGameState, updateData } from "./http.js";
 
 async function saveGame(state, uid) {
     const token = localStorage.getItem('access_token');
-    return saveGameState(token,{ game_state: state , user_id:uid});
+    return saveGameState(`STATE`, token, { game_state: state, user_id: uid });
 }
 
 async function updateGame(state, gameId) {
     const token = localStorage.getItem('access_token');
-    updateData(`STATE?id=eq.${gameId}`,token, { game_state: state })
+    updateData(`STATE?id=eq.${gameId}`, token, { game_state: state })
 }
 
 function downloadGame(gameId) {
     const token = localStorage.getItem('access_token');
-    console.log("iddd" ,gameId)
-
-    return getData(`STATE?select=game_state&id=eq.${gameId}`,token)
+    return getData(`STATE?select=game_state&id=eq.${gameId}`, token)
 }
 
 /* 
 ///OBTENER PARTIDAS///
 */
 
-function obtainProfile(gameId) {
-    const token = localStorage.getItem('access_token');
-    console.log("iddd" ,gameId)
-
-    return getData(`STATE?select=game_state&id=eq.${gameId}`,token)
-}
 
 async function obtainAllGames(uid) {
     const token = localStorage.getItem('access_token');
-    const response = await getData(`STATE?select*&user_id.${uid}&order=created_at.desc&limit=5`, token);
-    return response;
+    return getData(`STATE?select*&user_id.${uid}&order=created_at.desc&limit=5`, token);
 }
