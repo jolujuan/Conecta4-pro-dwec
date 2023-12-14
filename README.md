@@ -9,10 +9,13 @@ _Bienvenido al emocionante juego en linea de Conecta4, el clasico juego que pone
 - **Registro y Autenticación de Usuarios**: Seguridad y facilidad para manejar tu cuenta.
 - **Inicio de Nueva Partida**: Empieza a jugar inmediatamente después de registrarte.
 - **Guardar y Continuar Partidas**: Tu progreso no se pierde. Puedes retomar tu partida en cualquier momento.
+- **Perfil Modificable**: Modificar usuario, contraseña o añadir una imagen de perfil!.
 - **Interfaz Intuitiva**: Una experiencia de usuario fluida y sin complicaciones.
 
 ### Caracteristica adicionales
 - **PopUps**: Muestran mensajes cuando el token caduca, se completa un registro o no tiene permisos.
+
+![Adicional 4](https://i.postimg.cc/bw9cQ9kg/4.png https://i.postimg.cc/rpy6gR9k/5.png)
 
 ## Comenzando 🚀
 
@@ -51,6 +54,8 @@ Para ofrecer una experiencia personalizada y segura, Conecta 4 utiliza un sistem
 - Guardar el progreso de las partidas.
 - Continuar juegos previamente iniciados.
 
+
+![Registro 4](https://i.postimg.cc/HL8nYNfn/2.png https://i.postimg.cc/C1y1zNgN/3.png)
 
 ## Construido con 🛠️
 
