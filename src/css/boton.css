@@ -1,56 +1,75 @@
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .login-btn-home {
-    width: 137px;
-    display: block;
-    margin: 9px auto 9px auto;
-    padding: 9.2px 16.4px;
-    background-color: #f05549;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 13px;
-    transition: background-color 0.3s;
-    font-size: 15px;
-
+  width: 137px;
+  display: block;
+  margin: 9px auto 9px auto;
+  padding: 9.2px 16.4px;
+  background-color: #f05549;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 13px;
+  transition: background-color 0.3s;
+  font-size: 15px;
 }
 
 .login-btn-menu {
-    width: 60px;
-    display: block;
-     margin: 9px 6px 9px 6px; 
-     padding: 7.2px 14.4px; 
-    background-color: #f05549;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 13px;
-    transition: background-color 0.3s;
-    font-size: 13px;
+  width: 60px;
+  display: block;
+  margin: 9px 6px 9px 6px;
+  padding: 7.2px 14.4px;
+  background-color: #f05549;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 13px;
+  transition: background-color 0.3s;
+  font-size: 13px;
 }
 
-.login-btn:hover {
-    background-color: #df1114;
-    text-decoration: none;
-    color: #fff;
+.profile {
+  background-color: #2980b9;
+  transition: all 0.4s ease;
+  width: 70%;
+}
+
+
+.login-btn-home:hover {
+  background-color: #df1114;
+  text-decoration: none;
+  color: #fff;
+}
+
+#chgpass:hover{
+  transition: all 0.4s ease;
+
+  background-color: #2c3e4f;
+
+}
+
+.login-btn-menu:hover {
+  background-color: #df1114;
+  text-decoration: none;
+  color: #fff;
 }
 
 .logout {
-    background-color: #ccc;
-    color: #000;
+  background-color: #ccc;
+  color: #000;
 }
 
-
 div.boton {
-    justify-content: center; /* Asegurar que los elementos estén centrados */
-    padding: 9.5px;
-    background-color: #2C3E4F;
-    text-align: center;
-    border-radius: 5px;
-    font-size: 16.2px;
-    font-weight: bold;
-    display: flex;
+  justify-content: center;
+  /* Asegurar que los elementos estén centrados */
+  padding: 9.5px;
+  background-color: #2c3e4f;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 16.2px;
+  font-weight: bold;
+  display: flex;
 }
 
 /*.mensaje-bienvenida {

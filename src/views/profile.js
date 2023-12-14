@@ -1,29 +1,37 @@
 import { route } from "../router.js";
 import { getProfile, updateProfile } from "../services/users.js";
-
 export { profileForm };
+
+
 function profileForm(params) {
-    const divProfile = document.createElement("div");
+  const divProfile = document.createElement("div");
 
-    getProfile().then((dataProfile) => {
-        dataProfile = dataProfile[0];
+  getProfile().then((dataProfile) => {
+    dataProfile = dataProfile[0];
 
-        divProfile.innerHTML = `<style> #container{height:40em} </style>
+    divProfile.innerHTML = `<style> #container {min-height: 700px;max-height: 1000px}
+    </style>
         <div class="recuadro">
         <h1 class="form-title">Profile</h1>
     
-        <form action="action_page.php" >
+        <form>
     
           <input type="email" id="email" name="email" placeholder="Email" required readonly value="${localStorage.getItem('email')}">
-          <input type="password" id="contraRegistre1" placeholder="Password" required>
-          <input type="password" id="contraRegistre2" placeholder="Repeat Password" required>
+          <input type="password" id="contraRegistre1" placeholder="Password" >
+          <input type="password" id="contraRegistre2" placeholder="Repeat Password" >
+          
+          <div style="display:flex;justify-content:center">
+          <button type="button" class="login-btn-menu profile" id="chgpass">Change Password</button>
+          </div>
 
           <input type="text" id="username" name= "username" placeholder="Username" value="${dataProfile.username}">
           <input type="text" id="full_name" name= "full_name" placeholder="Nombre completo" value="${dataProfile.full_name}">
 
-          <div>
+          <div style="display:flex;justify-content:center">
+
           <img class="avatar_profile" style="max-width: 200px" id="avatar_prev" src="${dataProfile.avatar_blob ? dataProfile.avatar_blob : ''}"/>
           </div>
+          
           <label for="avatar"><b>Avatar</b></label>
           <input type="file" id="avatar" name="avatar">
 
@@ -32,24 +40,46 @@ function profileForm(params) {
           </div>
         </form>  
         </div>`;
-        let form = divProfile.querySelector("form");
-        let buttonSubmit = form.querySelector('[type~="submit"');
-
-        buttonSubmit.addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const formData = new FormData(form);
 
 
-            const { username, full_name } = Object.fromEntries(formData);
-            console.log(username, full_name)
+    /* Funcion personalizada para cambiar la altura del contenedor 
+    respecto a la del formulario con imagen */
+    function ajustarAltura() {
+      let divProfile = document.querySelector('.recuadro');
+      let contenedor = document.querySelector('#container');
+      let imagen = document.getElementById('avatar_prev');
+      let alturaImagen = 0;
 
-            const dataUpdate = await updateProfile({ username, full_name })
+       imagen.onload = function () {
+        alturaImagen = imagen.offsetHeight;
+        console.log(imagen.offsetHeight);
+        let alturaForm = divProfile.offsetHeight + alturaImagen;
+        contenedor.style.height = alturaForm + 'px';
+      } 
+    }
+    ajustarAltura();
 
-            route('#/profile');
-        });
 
+    let form = divProfile.querySelector("form");
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const { username, full_name, avatar } = Object.fromEntries(formData);
+
+      const dataUpdate = await updateProfile({ username, full_name, avatar })
+      route('#/profile');
     });
 
-    return divProfile;
+    function encodeImageFileAsURL(element) {
+      const file = element.files[0];
+      if (file) {
+        divProfile.querySelector('#avatar_prev').src = URL.createObjectURL(file);
+      }
+    }
+
+    divProfile.querySelector('#avatar').addEventListener('change', function () { encodeImageFileAsURL(this); });
+  });
+
+  return divProfile;
 }

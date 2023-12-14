@@ -1,3 +1,6 @@
+import { route } from "../router.js";
+import { popup, showPopup } from "../views/showPopup.js";
+
 export {
   saveGameState,
   getData,
@@ -6,6 +9,8 @@ export {
   register,
   createProfile,
   logoutSupabase,
+  fileRequest,
+  getFileRequest
   //downloadGameState,
 };
 
@@ -20,43 +25,6 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-/*
-Prefer: "return=representation",
-
-fetch('https://tu_dominio.supabase.co/tu_endpoint', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Prefer': 'return=representation'
-  },
-  body: JSON.stringify({campo1: 'valor1', campo2: 'valor2'})
-})
-.then(response => response.json())
-.then(data => console.log(data)); // Aquí 'data' contiene la representación del recurso creado
-*/
-
-/* async function getLastId(url, method, headers) {
-  let response = await fetch(url, {
-    method,
-    headers,
-  });
-
-  if (response.status >= 200 && response.status < 300) {
-    let data = await response.json();
-    return data[0].id; // Obtener el elemento devuelto del array
-  } else {
-    if (response.headers.get("Content-Type").includes("application/json")) {
-      const errorResponse = await response.json();
-      return Promise.reject(errorResponse);
-    } else {
-      return Promise.reject({
-        error: "Error in response",
-        status: response.status,
-      });
-    }
-  }
-} */
-
 /* 
 ///METODO GENERAL PARA GUARDAR DATOS EN EL SERVIDOR///
  */
@@ -67,6 +35,20 @@ async function supaRequest(url, method, headers, body) {
     headers,
     body: JSON.stringify(body),
   });
+
+  /* Verificar si el token sigue activo */
+  if (response.status === 401) { 
+    const responseData = await response.json();
+    if (responseData && responseData.code === 'PGRST301') { 
+      
+      const main = document.querySelector("#container");
+      main.append(popup('expira'));
+      showPopup();
+      route('#/login');
+
+      return Promise.reject(responseData); // Rechazar la promesa con los detalles del error
+    }
+  }
 
   if (response.status >= 200 && response.status < 300) { // En cas d'error en el servidor
     if (response.headers.get('content-type')) { // Si retorna un JSON
@@ -146,6 +128,48 @@ async function logoutSupabase(token) {
 }
 
 /* 
-///OBTENER PARTIDAS///
+///OBTENER STORAGE///
 */
+async function fileRequest(url, body, token) {
+  const headersFile = {
+    apiKey: SUPABASE_KEY,
+    Authorization: `Bearer ${token}`,
+    'x-upsert': true, // Necessari per a sobreescriure
+  };
+  const response = await fetch(`${urlBase}${url}`, {
+    method: 'POST',
+    headers: headersFile,
+    body,
+  });
+  if (response.status >= 200 && response.status <= 300) {
+    if (response.headers.get('content-type')) {
+      const datos = await response.json(); // Retorna un json amb la ruta relativa.
+      datos.urlAvatar = `${urlBase}${url}`; // El que
+      return datos;
+    }
+    return {};
+  }
 
+  return Promise.reject(await response.json());
+}
+
+async function getFileRequest(url, token) {
+  const headersFile = {
+    apiKey: SUPABASE_KEY,
+    Authorization: `Bearer ${token}`,
+  };
+  const response = await fetch(`${url}`, {
+    method: 'GET',
+    headers: headersFile,
+
+  });
+  if (response.status >= 200 && response.status <= 300) {
+    if (response.headers.get('content-type')) {
+      const datos = await response.blob();
+      return datos;
+    }
+    return {};
+  }
+
+  return Promise.reject(await response.json());
+}

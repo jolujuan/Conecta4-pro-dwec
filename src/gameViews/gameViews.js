@@ -12,6 +12,7 @@ const generateGame = (container, gameId) => {
   container.innerHTML = "";
   container.append(getBoardTemplate());
 
+  /* Devolvemos el estado del juego con el id descargado */
   drawGameBoard(gameId).then(newState => {
 
     if (newState) {
@@ -65,7 +66,7 @@ function createNewGame() {
       });
   }
 }
-
+/* Pasamos el id del juego para descargar el que nos interesa */
 async function drawGameBoard(gameId) {
   try {
     const state = await downloadGame(gameId);
@@ -95,7 +96,7 @@ const generateGameList = () => {
   gameListTable.classList.add('games-table');
   containerDiv.appendChild(gameListTable);
 
-
+  /* Aqui pasamos el juego ya descargado */
   const generateTable = (games) => {
     gameListTable.innerHTML += games.map((game) => {
       // Convertir el objeto 'game_state' a una cadena JSON para visualización
@@ -125,10 +126,11 @@ const generateGameList = () => {
     /* Formatear la fecha con T*/
     const dias = fecha.split("T")[0].split("-");
     const horas = fecha.split("T")[1].split(":");
-    return `Fecha: ${dias[2]}/${dias[1]}/${dias[0]} - Hora: ${+horas[0]+1}:${horas[1]}`;
+    return `Fecha: ${dias[2]}/${dias[1]}/${dias[0]} - Hora: ${+horas[0] + 1}:${horas[1]}`;
   };
   const userId = localStorage.getItem('uid');
 
+  /* Cargar los juegos leidos para enviarlos a generar */
   if (userId) {
     obtainAllGames(userId).then((games) => {
       generateTable(games);

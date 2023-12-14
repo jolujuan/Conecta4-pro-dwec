@@ -43,11 +43,11 @@ function route(ruta) {
       break;
     case '#/menu':
       localStorage.removeItem('gameId');
-      const uid=localStorage.getItem("uid");
+      const uid = localStorage.getItem("uid");
       if (uid) {
         main.innerHTML = "";
         main.append(menu());
-      }else{
+      } else {
         main.append(popup('menu'));
         showPopup();
       }
@@ -58,6 +58,7 @@ function route(ruta) {
       const idLocal = localStorage.getItem('gameId');
 
       if (idParams) {
+        //Iniciar el juego con el id que nos interesa
         generateGame(main, idParams);
       } else if (idLocal) {
         window.location.hash = `#/game?id=${idLocal}`;
@@ -71,8 +72,14 @@ function route(ruta) {
       main.append(generateGameList());
       break;
     case "#/profile":
-      main.innerHTML = '';
-      main.append(profileForm());
+      const uidProfile = localStorage.getItem("uid");
+      if (uidProfile) {
+        main.innerHTML = "";
+        main.append(profileForm());
+      } else {
+        main.append(popup('perfil'));
+        showPopup();
+      }
       break;
     case "#/logout":
       logout();

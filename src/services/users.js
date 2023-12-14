@@ -1,4 +1,4 @@
-import { login, register, logoutSupabase, createProfile, getData, updateData } from "./http.js";
+import { login, register, logoutSupabase, createProfile, getData, updateData, fileRequest, getFileRequest } from "./http.js";
 export { loginUser, registerUser, updateProfile, getProfile,logout };
 
 function expirationDate(expires_in, extraSeconds) {
@@ -19,14 +19,6 @@ async function loginUser(email, password) {
     localStorage.setItem('expirationDate', expirationDate(dataLogin.expires_in, 7200));
 
     status.success = true;
-
-    if (status.success) {
-
-      const username='joselu';
-      const full_name='jose luis juan';
-      const dataUpdate = await updateProfile({ username, full_name })
-      getProfile()
-    }
 
   } catch (err) {
     console.log(err);
@@ -65,8 +57,15 @@ async function updateProfile(profile) {
   if (!existingProfile) {
     createProfile(token, { id: uid });
   }
+  
+  const formImg = new FormData();
+  formImg.append('avatar', profile.avatar, 'avatarProfile.png');
 
-  console.log("Se proceden a guardar los datos")
+  const avatarResponse = await fileRequest(`/storage/v1/object/imagenes/avatar${uid}.png`, formImg, token);
+
+  profile.avatar_url = avatarResponse.urlAvatar;
+  delete profile.avatar;
+
   const responseUpdate = await updateData(`profiles?id=eq.${uid}&select=*`, token, profile);
 
 }
@@ -77,34 +76,19 @@ async function getProfile() {
   const responseGet = await getData(`profiles?id=eq.${uid}&select=*`, access_token);
   console.log(responseGet);
  
- /* const { avatar_url } = responseGet[0];
+  const { avatar_url } = responseGet[0];
   responseGet[0].avatar_blob = false;
   if (avatar_url) {
-    const imageBlob = await getFileRequest(avatar_url, access_token);
-    console.log(imageBlob);
+    const uniqueParam = new Date().getTime(); // Crear un sello de tiempo único
+    /* Actualizar a url unica para que la cache del navegados se actualize */
+    const imageBlob = await getFileRequest(`${avatar_url}?${uniqueParam}`, access_token);
+        console.log(imageBlob);
     if (imageBlob instanceof Blob) {
       responseGet[0].avatar_blob = URL.createObjectURL(imageBlob);
     }
-  }*/
+  }
   return responseGet;
 }
-
-
-/* async function addInputRegister(nickname) {
-  const status = { success: false };
-  try {
-    // Espera a que la función register complete y luego actualiza el estado
-    const dataRegister = await addInput(nickname);
-    console.log(dataRegister);
-    status.success = true;
-
-  } catch (err) {
-    console.log(err);
-    status.success = false;
-    status.errorText = err.error_description;
-  }
-  return status;
-} */
 
 
 function obtenerMensajeError(error) {
