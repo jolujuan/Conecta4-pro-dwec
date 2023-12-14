@@ -53,13 +53,13 @@ function registerForm() {
 
       const dataLogin = await registerUser(user.value, passwd.value);
       if (dataLogin) {
+        divRegister.appendChild(popup('register'));
         showPopup();
       }
     }
   });
   
   //Añadir popup
-  divRegister.appendChild(popup('register'));
   return divRegister;
 }
 

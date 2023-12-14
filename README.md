@@ -1,5 +1,7 @@
 # Conecta 4 - Juego en línea
 
+![Conecta 4](https://i.postimg.cc/PNHYYHnS/1.png)
+
 _Bienvenido al emocionante juego en linea de Conecta4, el clasico juego que pone a prubea tu agilidad y destreza mental. Este juego te permite desafiar a otros jugadores en línea, crear una cuenta, iniciar sesión, y guardar tu progreso actual para continuar más tarde. Además se incluyen estadisticas_
 
 ## Características
@@ -7,9 +9,10 @@ _Bienvenido al emocionante juego en linea de Conecta4, el clasico juego que pone
 - **Registro y Autenticación de Usuarios**: Seguridad y facilidad para manejar tu cuenta.
 - **Inicio de Nueva Partida**: Empieza a jugar inmediatamente después de registrarte.
 - **Guardar y Continuar Partidas**: Tu progreso no se pierde. Puedes retomar tu partida en cualquier momento.
-- **Juego en Línea**: Desafía a jugadores de todo el mundo y demuestra tus habilidades.
 - **Interfaz Intuitiva**: Una experiencia de usuario fluida y sin complicaciones.
 
+### Caracteristica adicionales
+- **PopUps**: Muestran mensajes cuando el token caduca, se completa un registro o no tiene permisos.
 
 ## Comenzando 🚀
 
@@ -65,16 +68,15 @@ _Herramientas utilizadas para crear el proyecto_
 
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-
 * **Jose Luis** - *Trabajo Contenido* - [jolujuan](https://github.com/jolujuan)
+
+_Agradecimientos al profesor que ayudo a levantar el proyecto_
 
 * **Jose Carillo** - *Fuente de inspiración* - [xxjcaxx](https://github.com/xxjcaxx)
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Este proyecto está bajo la Licencia (@Copyright) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 
 ## Expresiones de Gratitud 🎁
 
