@@ -1,6 +1,6 @@
 # Conecta 4 - Juego en línea
 
-![Conecta 4](https://i.postimg.cc/PNHYYHnS/1.png)
+![Conecta 4](https://postimg.cc/mtvb1b0D)
 
 _Bienvenido al emocionante juego en linea de Conecta4, el clasico juego que pone a prubea tu agilidad y destreza mental. Este juego te permite desafiar a otros jugadores en línea, crear una cuenta, iniciar sesión, y guardar tu progreso actual para continuar más tarde. Además se incluyen estadisticas_
 
