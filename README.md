@@ -15,7 +15,7 @@ _Bienvenido al emocionante juego en linea de Conecta4, el clasico juego que pone
 ### Caracteristica adicionales
 - **PopUps**: Muestran mensajes cuando el token caduca, se completa un registro o no tiene permisos.
 
-![Adicional 4](https://i.postimg.cc/bw9cQ9kg/4.png) ![Registro 4](https://i.postimg.cc/rpy6gR9k/5.png)
+![Adicional 4](https://i.postimg.cc/fy7Fswzs/4.png) ![Registro 4](https://i.postimg.cc/xjLBMPKZ/5.png)
 
 ## Comenzando 🚀
 
@@ -55,7 +55,7 @@ Para ofrecer una experiencia personalizada y segura, Conecta 4 utiliza un sistem
 - Continuar juegos previamente iniciados.
 
 
-![Registro 4](https://i.postimg.cc/HL8nYNfn/2.png) ![Registro 4](https://i.postimg.cc/C1y1zNgN/3.png)
+![Registro 4](https://i.postimg.cc/VkkTyQ3y/2.png) ![Registro 4](https://i.postimg.cc/3xfqYfTk/3.png)
 
 ## Construido con 🛠️
 
