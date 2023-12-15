@@ -12,7 +12,7 @@ _Bienvenido al emocionante juego en linea de Coloca4, el clasico juego que pone 
 - **Perfil Modificable**: Modificar usuario, contraseña o añadir una imagen de perfil!.
 - **Interfaz Intuitiva**: Una experiencia de usuario fluida y sin complicaciones.
 
-### Caracteristica adicionales
+### Caracteristicas adicionales
 - **PopUps**: Muestran mensajes cuando el token caduca, se completa un registro o no tiene permisos.
 
 ![Adicional 4](https://i.postimg.cc/fy7Fswzs/4.png) ![Registro 4](https://i.postimg.cc/xjLBMPKZ/5.png)
