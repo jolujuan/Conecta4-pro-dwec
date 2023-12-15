@@ -87,7 +87,7 @@ function profileForm(params) {
 function restablecerEstilos() {
   const container = document.querySelector('#container');
   if (container) {
-    container.style.height = ''; // Restablece a la altura definida por CSS
-    container.style.maxHeight = ''; // Restablece al máximo de altura definida por CSS
+    container.style.height = ''; 
+    container.style.maxHeight = '';
   }
 }
