@@ -6,7 +6,7 @@ import { initDom } from "../js/dom.js";
 
 import { getBoardTemplate } from "./templates.js";
 import { downloadGame, obtainAllGames, saveGame } from "../services/conectahttp.js";
-export { generateGame, createNewGame, generateGameList };
+export { generateGame, createNewGame, generateGameList,drawGameBoard };
 
 
 const generateGame = (container, gameId) => {

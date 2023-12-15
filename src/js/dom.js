@@ -77,11 +77,12 @@ export function initDom(juego) {
       verificarGanador(juego);
 
     } else {
+      
       //Volver a jugar cuando clicka alguna ficha de color
       if (this.classList.contains("yellow") || this.classList.contains("red")) {
-        console.log("estado del juego ", STATE.tablero);
-
-        juego.reiniciar();
+        console.log("estado del juego ", STATE.tablero);        
+        juego.reiniciar();/* Volver a guardar el juego una vez se ha reiniciado el estado */
+        updateGame(STATE, localStorage.getItem('gameId'));
       }
     }
   }
