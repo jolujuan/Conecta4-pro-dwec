@@ -39,11 +39,10 @@ Git Bash for Windows
 _Para comenzar a jugar a Coloca 4, sigue estos pasos:_
 
 1. Clona el repositorio en tu máquina local.
-2. Instala las dependencias con `npm install`.
-3. Inicia el servidor con la extensión `live Server`.
-4. Abre tu navegador y ve a `http://localhost:3000`.
-5. Regístrate para crear tu cuenta de usuario.
-6. ¡Comienza a jugar!
+2. Inicia el servidor con la extensión `live Server`.
+3. Abre tu navegador y ve a la ruta que le propone live server.
+4. Regístrate para crear tu cuenta de usuario.
+5. ¡Comienza a jugar!
 
 ## Registro y Autenticación
 
