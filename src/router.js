@@ -9,7 +9,7 @@ import { logout } from "./services/users.js";
 import { popup, showPopup } from "./views/showPopup.js";
 import { copyright } from "./views/copyright.js";
 import { mostrarData } from "./js/data.js";
-import { profileForm } from "./views/profile.js";
+import { profileForm, restablecerEstilos } from "./views/profile.js";
 import { estadisticas } from "./views/estadisticas.js";
 
 export { route };
@@ -27,6 +27,11 @@ function route(ruta) {
 
   const main = document.querySelector("#container");
   const body = document.body;
+
+  // Restablecemos el estilo por defecto si no estamos en el perfil
+  if (ruta !== "#/profile") {
+    restablecerEstilos();
+  }
 
   switch (ruta) {
     case "#/":

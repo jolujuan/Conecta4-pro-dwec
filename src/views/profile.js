@@ -1,6 +1,6 @@
 import { route } from "../router.js";
 import { getProfile, updateProfile } from "../services/users.js";
-export { profileForm };
+export { profileForm, restablecerEstilos };
 
 
 function profileForm(params) {
@@ -82,4 +82,12 @@ function profileForm(params) {
   });
 
   return divProfile;
+}
+
+function restablecerEstilos() {
+  const container = document.querySelector('#container');
+  if (container) {
+    container.style.height = ''; // Restablece a la altura definida por CSS
+    container.style.maxHeight = ''; // Restablece al máximo de altura definida por CSS
+  }
 }

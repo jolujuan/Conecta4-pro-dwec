@@ -14,7 +14,6 @@ import { route } from "./router.js";
 import { menuSuperior } from "./views/menuSuperior.js";
 import { footer } from "./views/footer.js";
 
-
 document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelector('#menu').innerHTML = menuSuperior();
