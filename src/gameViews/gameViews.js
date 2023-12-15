@@ -22,6 +22,8 @@ const generateGame = (container, gameId) => {
       if (juegoPrincipal) {
         // Inicialización del juego principal con estado
         juegoPrincipal = new Juego(newState);
+        initDom(juegoPrincipal);
+
 
       } else {
         /* Si no hay juego, cargarlo y crearlo en el dom */
@@ -34,6 +36,9 @@ const generateGame = (container, gameId) => {
       juegoPrincipal.pintarTablero();
       //LLamar para actualizar contadores
       juegoPrincipal.actualizarMarcadorBase();
+      //Comprobar si ha ganado una vez se actualize el juego 
+      verificarGanador(juegoPrincipal); 
+
     } else {
 
       // Si no hay un juego guardado, inicializa un juego nuevo
@@ -42,6 +47,13 @@ const generateGame = (container, gameId) => {
     }
   });
 };
+
+function verificarGanador(juego) {
+  // Verificar la victoria
+  if (STATE.jugadorHaGanado) {
+    juego.marcarFichasGanadoras(STATE.coordenadas);
+  }
+}
 
 function resetState() {
   Object.assign(STATE, {

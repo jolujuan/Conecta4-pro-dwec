@@ -6,22 +6,19 @@ import { updateGame } from "../services/conectahttp.js";
 export function initDom(juego) {
   crearTableroDom();
   agregarEventosACeldas(juego);
-  
-  let turnoActual ;
-/*   turnoActual = juego.actualizarDOMConTurnoActual();
- */
-  function mostrarFichaFantasma(columna, color) {
-    // Asegúrate de que no haya otra.
-    ocultarFichaFantasma();
 
-    // Crear el elemento div para la ficha fantasma.
+  let turnoActual;
+
+  function mostrarFichaFantasma(columna, color) {
+    ocultarFichaFantasma();
+    // Crear el elemento div para la ficha fantasma
     const ficha = document.createElement("div");
     ficha.classList.add("ficha-fantasma", color);
-  
+
     const anchoCelda = 50;
-    ficha.style.left = `${columna * (anchoCelda+2 ) }px`;
-  
-    // Añadir la ficha al contenedor.
+    ficha.style.left = `${columna * (anchoCelda + 2)}px`;
+
+    // Añadir la ficha al contenedor
     document.querySelector("#container").appendChild(ficha);
   }
 
@@ -31,7 +28,7 @@ export function initDom(juego) {
       fichaFantasma.remove();
     }
   }
- 
+
   function crearTableroDom() {
     const TABLA_PRINCIPAL = document.querySelector("#tabla");
 
@@ -47,7 +44,7 @@ export function initDom(juego) {
         celda.addEventListener('mouseover', () => {
           turnoActual = juego.actualizarDOMConTurnoActual();
           mostrarFichaFantasma(j, turnoActual);
-      });        celda.addEventListener('mouseout', ocultarFichaFantasma);
+        }); celda.addEventListener('mouseout', ocultarFichaFantasma);
       }
       TABLA_PRINCIPAL.appendChild(fila); //Agregar la fila a la tabla
     }
@@ -67,8 +64,6 @@ export function initDom(juego) {
     const fila = parseInt(idParts[1]);
     const col = parseInt(idParts[3]);
 
-/* 
-*/
     if (STATE.currentStatus !== "WON") {
       juego.actualizarTablero(fila, col);
 
@@ -79,9 +74,8 @@ export function initDom(juego) {
       updateGame(STATE, localStorage.getItem('gameId'));
 
       //Marcar fichas ganadoras despues de ganar y repintar
-      if (STATE.jugadorHaGanado) {
-        juego.marcarFichasGanadoras(STATE.coordenadas);
-      }
+      verificarVictoria(juego);
+
     } else {
       //Volver a jugar cuando clicka alguna ficha de color
       if (this.classList.contains("yellow") || this.classList.contains("red")) {
@@ -91,4 +85,5 @@ export function initDom(juego) {
       }
     }
   }
+
 }
