@@ -73,9 +73,6 @@ export function initDom(juego) {
       //Actualizar el estado del juego
       updateGame(STATE, localStorage.getItem('gameId'));
 
-      //Marcar fichas ganadoras despues de ganar y repintar
-      verificarVictoria(juego);
-
     } else {
       //Volver a jugar cuando clicka alguna ficha de color
       if (this.classList.contains("yellow") || this.classList.contains("red")) {
