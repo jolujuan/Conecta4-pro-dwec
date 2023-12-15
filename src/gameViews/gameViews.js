@@ -48,7 +48,7 @@ const generateGame = (container, gameId) => {
   });
 };
 
-function verificarGanador(juego) {
+export function verificarGanador(juego) {
   // Verificar la victoria
   if (STATE.jugadorHaGanado) {
     juego.marcarFichasGanadoras(STATE.coordenadas);

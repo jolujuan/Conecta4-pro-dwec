@@ -86,7 +86,6 @@ export default class Juego {
                 //pasandole el jugador al metodo. 2- Cambiamos el estado
                 if (this.haGanado(STATE.players[this.jugadorActual])) {
 
-                    alert(`${STATE.players[this.jugadorActual]} ha ganado!`);
                     //El estado cambiara
                     STATE.currentStatus = "WON";
                     //Incrementamos el marcador
@@ -162,6 +161,8 @@ export default class Juego {
 
 
     marcarFichasGanadoras(coordenadas) {
+        alert(`${STATE.players[(this.jugadorActual + 1) % 2]} ha ganado!`);
+
         //Separamos las filas (i) de las columnas (i) de las coordenadas
         // para concatenar. Y obtenemos el id de las fichas que coinciden
         let coordenadasCeldas = "";

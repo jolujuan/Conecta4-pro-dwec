@@ -1,5 +1,6 @@
 import { STATE } from "./game.js";
 import { updateGame } from "../services/conectahttp.js";
+import { verificarGanador } from "../gameViews/gameViews.js";
 
 
 //Logica del DOM para crearlo en html
@@ -72,6 +73,8 @@ export function initDom(juego) {
 
       //Actualizar el estado del juego
       updateGame(STATE, localStorage.getItem('gameId'));
+
+      verificarGanador(juego);
 
     } else {
       //Volver a jugar cuando clicka alguna ficha de color
