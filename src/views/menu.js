@@ -13,7 +13,7 @@ function menu() {
       <p class=" btn-texto">Selecciona el tipo de partida.</p>
       <a class="login-btn-home" href="#/game" role="button">Nueva partida</a>
       <a class="login-btn-home" href="#/allgames" role="button">Cargar partida</a>
-      <a class="login-btn-home" href="#" role="button">Estadisticas</a>
+      <a class="login-btn-home" href="#/estadisticas" role="button">Estadisticas</a>
     </div>
   </div>`;
 

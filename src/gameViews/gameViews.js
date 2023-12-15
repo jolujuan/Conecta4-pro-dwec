@@ -8,27 +8,36 @@ import { getBoardTemplate } from "./templates.js";
 import { downloadGame, obtainAllGames, saveGame } from "../services/conectahttp.js";
 export { generateGame, createNewGame, generateGameList };
 
+
 const generateGame = (container, gameId) => {
   container.innerHTML = "";
   container.append(getBoardTemplate());
 
+  let juegoPrincipal;
   /* Devolvemos el estado del juego con el id descargado */
   drawGameBoard(gameId).then(newState => {
 
     if (newState) {
-      // Inicialización del juego principal con el nuevo estado
-      const juegoPrincipal = new Juego(newState);
+      /* Si el juego esta iniciado cargarlo de nuevo */
+      if (juegoPrincipal) {
+        // Inicialización del juego principal con estado
+        juegoPrincipal = new Juego(newState);
 
-      // Inicializar el DOM con el juego actualizado
-      initDom(juegoPrincipal);
+      } else {
+        /* Si no hay juego, cargarlo y crearlo en el dom */
+        juegoPrincipal = new Juego(newState);
+        // Inicializar el DOM con el juego actualizado
+        initDom(juegoPrincipal);
+      }
 
       // Llamar a pintarTablero para actualizar el tablero
       juegoPrincipal.pintarTablero();
       //LLamar para actualizar contadores
       juegoPrincipal.actualizarMarcadorBase();
     } else {
+
       // Si no hay un juego guardado, inicializa un juego nuevo
-      const juegoPrincipal = new Juego();
+      juegoPrincipal = new Juego();
       initDom(juegoPrincipal);
     }
   });
@@ -52,6 +61,7 @@ function resetState() {
 function createNewGame() {
   /* Asegurarse de que el estado ha sido reiniciado antes de guardar por primera vez */
   resetState();
+
   let uid = localStorage.getItem('uid')
   if (uid) {
     saveGame(STATE, uid)
@@ -60,6 +70,7 @@ function createNewGame() {
         const newGameId = response[0].id;
         localStorage.setItem('gameId', newGameId);
         window.location.hash = `#/game?id=${newGameId}`;
+
       })
       .catch(error => {
         console.error('Error al crear un nuevo juego:', error);
@@ -73,6 +84,7 @@ async function drawGameBoard(gameId) {
     if (state && state.length > 0) {
       console.log("el estado es ", state[0].game_state);
       const newState = state[0].game_state;
+
       return newState;
     } else {
       // Manejar el caso en que el estado no se encuentra o es inválido

@@ -27,5 +27,5 @@ function downloadGame(gameId) {
 
 async function obtainAllGames(uid) {
     const token = localStorage.getItem('access_token');
-    return getData(`STATE?select*&user_id.${uid}&order=created_at.desc&limit=5`, token);
+    return getData(`STATE?select=*&user_id=eq.${uid}&order=created_at.desc&limit=5`, token);
 }

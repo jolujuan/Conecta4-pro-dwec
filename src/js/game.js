@@ -97,6 +97,8 @@ export default class Juego {
                 this.jugadorActual = (this.jugadorActual + 1) % 2;
                 STATE.indiceJugadorActual = this.jugadorActual;  // Actualiza el estado
 
+                this.actualizarDOMConTurnoActual();
+
                 return i; // Retorna la fila donde se hizo click
             }
         }
@@ -185,5 +187,12 @@ export default class Juego {
             return true
         }
         return false; // Si no se cumple ninguna de las condiciones anteriores, no ha ganado
+    }
+
+    actualizarDOMConTurnoActual() {
+        // Actualizar el DOM con el nuevo turno
+        let turno = STATE.players[STATE.indiceJugadorActual];
+        return turno;
+        
     }
 }

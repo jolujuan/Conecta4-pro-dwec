@@ -1,8 +1,8 @@
-# Conecta 4 - Juego en línea
+# Coloca 4 - Juego en línea
 
-![Conecta 4](https://i.postimg.cc/7Z6bch9g/1.png)
+![Coloca 4](https://i.postimg.cc/7Z6bch9g/1.png)
 
-_Bienvenido al emocionante juego en linea de Conecta4, el clasico juego que pone a prubea tu agilidad y destreza mental. Este juego te permite desafiar a otros jugadores en línea, crear una cuenta, iniciar sesión, y guardar tu progreso actual para continuar más tarde. Además se incluyen estadisticas_
+_Bienvenido al emocionante juego en linea de Coloca4, el clasico juego que pone a prubea tu agilidad y destreza mental. Este juego te permite desafiar a otros jugadores en línea, crear una cuenta, iniciar sesión, y guardar tu progreso actual para continuar más tarde. Además se incluyen estadisticas_
 
 ## Características
 
@@ -47,7 +47,7 @@ _Para comenzar a jugar a Coloca 4, sigue estos pasos:_
 
 ## Registro y Autenticación
 
-Para ofrecer una experiencia personalizada y segura, Conecta 4 utiliza un sistema de registro y autenticación. Esto permite a los jugadores:
+Para ofrecer una experiencia personalizada y segura, Coloca 4 utiliza un sistema de registro y autenticación. Esto permite a los jugadores:
 
 - Crear una cuenta única.
 - Iniciar sesión con sus credenciales.

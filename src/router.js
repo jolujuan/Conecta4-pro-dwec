@@ -10,18 +10,19 @@ import { popup, showPopup } from "./views/showPopup.js";
 import { copyright } from "./views/copyright.js";
 import { mostrarData } from "./js/data.js";
 import { profileForm } from "./views/profile.js";
+import { estadisticas } from "./views/estadisticas.js";
 
 export { route };
 
 function route(ruta) {
-  console.log(ruta);
+  /* console.log(ruta); */
   let params = ruta.split('?')[1];
   params = params ? new Map(params.split('&').map((param) => {
     const paramArray = param.split('=');
     return [paramArray[0], paramArray[1]];
   })) : new Map();
 
-  console.log({ params });
+  /* console.log({ params }); */
   ruta = ruta.split("?")[0];
 
   const main = document.querySelector("#container");
@@ -81,7 +82,12 @@ function route(ruta) {
         showPopup();
       }
       break;
+    case '#/estadisticas':
+      main.innerHTML = "";
+      main.append(estadisticas());
+      break;
     case "#/logout":
+      stopPolling(); // Detener cualquier intervalo anterior
       logout();
       window.location.hash = '#/';
       break;

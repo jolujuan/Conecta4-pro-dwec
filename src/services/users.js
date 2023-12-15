@@ -1,5 +1,5 @@
 import { login, register, logoutSupabase, createProfile, getData, updateData, fileRequest, getFileRequest } from "./http.js";
-export { loginUser, registerUser, updateProfile, getProfile,logout };
+export { loginUser, registerUser, updateProfile, getProfile, logout };
 
 function expirationDate(expires_in, extraSeconds) {
   const currentTimeInSeconds = Math.floor(Date.now() / 1000);
@@ -52,12 +52,8 @@ async function updateProfile(profile) {
   const token = localStorage.getItem('access_token');
   const uid = localStorage.getItem('uid');
 
-  /* Guardar el uid en la columa id de profile, si no existe  */
-  const existingProfile = await getData(`profiles?select=id`, token);
-  if (!existingProfile) {
-    createProfile(token, { id: uid });
-  }
-  
+
+
   const formImg = new FormData();
   formImg.append('avatar', profile.avatar, 'avatarProfile.png');
 
@@ -73,18 +69,26 @@ async function updateProfile(profile) {
 async function getProfile() {
   const access_token = localStorage.getItem('access_token');
   const uid = localStorage.getItem('uid');
-  const responseGet = await getData(`profiles?id=eq.${uid}&select=*`, access_token);
-  console.log(responseGet);
- 
-  const { avatar_url } = responseGet[0];
-  responseGet[0].avatar_blob = false;
-  if (avatar_url) {
-    const uniqueParam = new Date().getTime(); // Crear un sello de tiempo único
-    /* Actualizar a url unica para que la cache del navegados se actualize */
-    const imageBlob = await getFileRequest(`${avatar_url}?${uniqueParam}`, access_token);
-        console.log(imageBlob);
-    if (imageBlob instanceof Blob) {
-      responseGet[0].avatar_blob = URL.createObjectURL(imageBlob);
+
+  /* Guardar el uid en la columa id de profile, si no existe  */
+  let responseGet = await getData(`profiles?id=eq.${uid}`, access_token);
+  if (responseGet.length === 0) {
+    await createProfile(access_token, { id: uid });
+    responseGet = await getData(`profiles?id=eq.${uid}&select=*`, access_token);
+  }
+
+  if (responseGet && responseGet.length > 0) {
+
+    const { avatar_url } = responseGet[0];
+    responseGet[0].avatar_blob = false;
+    if (avatar_url) {
+      const uniqueParam = new Date().getTime(); // Crear un sello de tiempo único
+      /* Actualizar a url unica para que la cache del navegados se actualize */
+      const imageBlob = await getFileRequest(`${avatar_url}?${uniqueParam}`, access_token);
+      console.log(imageBlob);
+      if (imageBlob instanceof Blob) {
+        responseGet[0].avatar_blob = URL.createObjectURL(imageBlob);
+      }
     }
   }
   return responseGet;
@@ -112,7 +116,7 @@ function logout() {
     }).catch((error) => {
       console.error('Error durante el logout:', error);
     });
-  }else{
+  } else {
     /* Si no existe pudo haber caducado, borrar datos directamente */
     localStorage.clear();
   }
