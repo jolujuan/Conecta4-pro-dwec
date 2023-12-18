@@ -92,7 +92,6 @@ function route(ruta) {
       main.append(estadisticas());
       break;
     case "#/logout":
-      stopPolling(); // Detener cualquier intervalo anterior
       logout();
       window.location.hash = '#/';
       break;
