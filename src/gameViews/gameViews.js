@@ -126,13 +126,13 @@ const generateGameList = () => {
       // Convertir el objeto 'game_state' a una cadena JSON para visualización
 
       return `<tr class="games-row">
-        <td class="games-cell">
+        <td>
           <pre>${formatoFecha(game.created_at)}</pre>
         </td>
         <td class="games-cell">
           <pre>${game.id}</pre>
         </td>
-        <td class="games-cell play"><button class="login-btn-menu play" id="play_${game.id}">Play</button></td>
+        <td class="login-btn-play"><button class="play" id="play_${game.id}">Play</button></td>
       </tr>`;
     }).join('');
     gameListTable.addEventListener('click', (event) => {

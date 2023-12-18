@@ -33,13 +33,8 @@ h2 {
 
 
 table {
-    border-collapse: separate;
-    border: 3px solid #073976;
     margin: 0 auto;
     margin-top: 25px;
-    padding: 10px;
-    background-color: rgb(56, 136, 207);
-    width: 81%;
 }
 
 td {
@@ -90,7 +85,7 @@ td {
     border-radius: 13px;
     max-width: 486px;
     /* min-width: 340px; */
-    height: 486.5px;
+    min-height: 486.5px;
     position: relative;
 }
 /* CLASES JUGADORES */
@@ -149,12 +144,6 @@ td {
 
 /* 
 FORMATO PARA CARGAR LOS JUEGOS */
-.games-cell {
-    vertical-align: middle;
-    text-align: center;
-    margin: 0px;
-
-}
 
 .games-cell.play {
     border: none;
@@ -173,6 +162,7 @@ FORMATO PARA CARGAR LOS JUEGOS */
 
 /* PARA EL COPYRIGHT */
 .copyright{
+    font-size: 15px;
     padding: 20px;
     text-align: justify;
 }

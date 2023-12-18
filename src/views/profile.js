@@ -9,7 +9,7 @@ function profileForm(params) {
   getProfile().then((dataProfile) => {
     dataProfile = dataProfile[0];
 
-    divProfile.innerHTML = `<style> #container {height: 700px;max-height: 1000px}
+    divProfile.innerHTML = `<style> #container {height: 700px;max-height: 1100px}
     </style>
         <div class="recuadro">
         <h1 class="form-title">Profile</h1>
@@ -57,8 +57,10 @@ function profileForm(params) {
         contenedor.style.height = alturaForm + 'px';
       } 
     }
-    ajustarAltura();
-
+    let imagen = document.getElementById('avatar_prev');
+    if (imagen) {
+      ajustarAltura(); 
+    }
 
     let form = divProfile.querySelector("form");
     form.addEventListener('submit', async (event) => {
