@@ -27,10 +27,9 @@ h2 {
     width: 50.83px;
     height: 50.34px;
     border-radius: 35px;
-    opacity: 0.5;
-    z-index: 10;
+    opacity: 0.2;
+    animation: caida2 0.25s forwards;
 }
-
 
 table {
     border-collapse: separate;
@@ -63,6 +62,19 @@ td {
     }
 }
 
+@keyframes caida2 {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 0.9;
+    }
+}
+
+
 .yellow {
     background-color: #F4C829;
 }
@@ -71,8 +83,8 @@ td {
     background-color: #F0314C;
 }
 
-.yellow,
-.red {
+tr .yellow,
+tr .red {
     animation: caida 0.5s forwards;
 
 
@@ -93,6 +105,7 @@ td {
     min-height: 486.5px;
     position: relative;
 }
+
 /* CLASES JUGADORES */
 #jugadores {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -161,22 +174,22 @@ FORMATO PARA CARGAR LOS JUEGOS */
     background: none;
 }
 
-.login-btn-menu.play{
+.login-btn-menu.play {
     margin: auto;
 }
 
 /* PARA EL COPYRIGHT */
-.copyright{
+.copyright {
     font-size: 15px;
     padding: 20px;
     text-align: justify;
 }
 
-fieldset{
+fieldset {
     margin-bottom: 20px;
 }
 
-.estadisticas{
+.estadisticas {
     padding: 20px;
     text-align: center;
     font-size: 20px;
