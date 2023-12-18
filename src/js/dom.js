@@ -8,6 +8,11 @@ export function initDom(juego) {
   crearTableroDom();
   agregarEventosACeldas(juego);
 
+  //No mostrar ficha fantasma en dispositivos moviles porque no tenemos mouse
+  function esDispositivoMovil() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
   let turnoActual;
 
   function mostrarFichaFantasma(columna, color) {
@@ -44,7 +49,9 @@ export function initDom(juego) {
 
         celda.addEventListener('mouseover', () => {
           turnoActual = juego.actualizarDOMConTurnoActual();
-          mostrarFichaFantasma(j, turnoActual);
+          if (!esDispositivoMovil()) {
+            mostrarFichaFantasma(j, turnoActual);
+        }
         }); celda.addEventListener('mouseout', ocultarFichaFantasma);
       }
       TABLA_PRINCIPAL.appendChild(fila); //Agregar la fila a la tabla
@@ -77,10 +84,10 @@ export function initDom(juego) {
       verificarGanador(juego);
 
     } else {
-      
+
       //Volver a jugar cuando clicka alguna ficha de color
       if (this.classList.contains("yellow") || this.classList.contains("red")) {
-        console.log("estado del juego ", STATE.tablero);        
+        console.log("estado del juego ", STATE.tablero);
         juego.reiniciar();/* Volver a guardar el juego una vez se ha reiniciado el estado */
         updateGame(STATE, localStorage.getItem('gameId'));
       }
